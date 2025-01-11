@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, jsonify
 from selenium import webdriver
 from bd import preencher_bd, get_wise_cotacao, get_nomad_cotacao, get_wu_cotacao
+from webdriver_manager.chrome import ChromeDriverManager
 
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ def get_driver():
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36'
     options.add_argument('user-agent={0}'.format(user_agent))
     driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     return driver
 
 @app.route('/', methods=['GET'])
