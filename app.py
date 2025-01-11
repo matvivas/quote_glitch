@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, jsonify
 from selenium import webdriver
 from bd import preencher_bd, get_wise_cotacao, get_nomad_cotacao, get_wu_cotacao
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import Service
 
 app = Flask(__name__)
 
