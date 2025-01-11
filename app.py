@@ -13,8 +13,8 @@ def get_driver():
     options.add_argument("--start-maximized")        # Abre o navegador em tela cheia
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36'
     options.add_argument('user-agent={0}'.format(user_agent))
-    driver = webdriver.Chrome(options=options)
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=options)
     return driver
 
 @app.route('/', methods=['GET'])
