@@ -1,7 +1,6 @@
 from get_quote_wise import get_wise
 from get_quote_wu import get_wu
 from get_quote_nomad import get_nomad
-from selenium import webdriver
 
 bd = []
 

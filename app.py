@@ -26,21 +26,21 @@ def cotacao():
 def wise_cotacao():
     driver = get_driver()
     wise = get_wise_cotacao(driver)
-    driver.quit()  # Fecha o navegador após a consulta
+    driver.quit()  
     return jsonify(wise)
 
 @app.route('/nomad', methods=['GET'])
 def nomad_cotacao():
     driver = get_driver()
     nomad = get_nomad_cotacao(driver)
-    driver.quit()  # Fecha o navegador após a consulta
+    driver.quit() 
     return jsonify(nomad)
 
 @app.route('/wu', methods=['GET'])
 def wu_cotacao():
     driver = get_driver()
     wu = get_wu_cotacao(driver)
-    driver.quit()  # Fecha o navegador após a consulta
+    driver.quit() 
     return jsonify(wu)
 
 if __name__ == '__main__':
