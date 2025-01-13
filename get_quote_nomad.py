@@ -13,5 +13,6 @@ def get_nomad(driver):
     botao.click()
     text = driver.find_element("class name", "ExchangeRate__body-input-static-value")
     valor = text.text.replace(",", ".")
-    print(valor)
+    valor_final = valor.replace(" ", "")
+    print(valor_final)
     return float(valor)

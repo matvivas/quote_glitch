@@ -6,5 +6,6 @@ def get_wu(driver):
     texto = driver.find_element("xpath", "/html/body/div[2]/section[1]/section[1]/div/div/div/div[3]/div[4]/div/p/strong/span")
     cotacao = texto.text
     valor_numerico = cotacao.split()[0].replace(",", ".")
+    print(valor_numerico)
     return round(float(valor_numerico), 2)
 
