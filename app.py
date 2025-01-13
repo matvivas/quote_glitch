@@ -5,7 +5,6 @@ from bd import preencher_bd, get_wise_cotacao, get_nomad_cotacao, get_wu_cotacao
 app = Flask(__name__)
 
 def get_driver():
-    """Cria e retorna uma nova instância do driver."""
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     options.add_experimental_option("detach", True)  # Mantém o navegador aberto
@@ -17,7 +16,6 @@ def get_driver():
 
 @app.route('/', methods=['GET'])
 def cotacao():
-    """Renderiza a página inicial com as cotações ordenadas."""
     driver = get_driver()  # Cria uma nova instância do driver
     cotacoes = preencher_bd(driver)  # Coleta as cotações
     cotacoes = sorted(cotacoes, key=lambda x: x['Valor'])
@@ -26,7 +24,6 @@ def cotacao():
 
 @app.route('/wise', methods=['GET'])
 def wise_cotacao():
-    """Retorna a cotação da Wise."""
     driver = get_driver()
     wise = get_wise_cotacao(driver)
     driver.quit()  # Fecha o navegador após a consulta
@@ -34,7 +31,6 @@ def wise_cotacao():
 
 @app.route('/nomad', methods=['GET'])
 def nomad_cotacao():
-    """Retorna a cotação da Nomad."""
     driver = get_driver()
     nomad = get_nomad_cotacao(driver)
     driver.quit()  # Fecha o navegador após a consulta
@@ -42,7 +38,6 @@ def nomad_cotacao():
 
 @app.route('/wu', methods=['GET'])
 def wu_cotacao():
-    """Retorna a cotação da Western Union."""
     driver = get_driver()
     wu = get_wu_cotacao(driver)
     driver.quit()  # Fecha o navegador após a consulta
