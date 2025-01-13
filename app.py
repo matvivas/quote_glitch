@@ -1,6 +1,10 @@
 from flask import Flask, render_template, redirect, url_for, jsonify
 from selenium import webdriver
 from bd import preencher_bd, get_wise_cotacao, get_nomad_cotacao, get_wu_cotacao
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
 
 app = Flask(__name__)
 
@@ -12,7 +16,11 @@ def get_driver():
     options.add_argument("--start-maximized")        # Abre o navegador em tela cheia
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36'
     options.add_argument('user-agent={0}'.format(user_agent))
-    driver = webdriver.Chrome(options=options)
+    # Usando o Service para passar o caminho do driver
+    service = Service(ChromeDriverManager().install())
+    
+    # Passando o service e options corretamente
+    driver = webdriver.Chrome(service=service, options=options)
     return driver
 
 @app.route('/', methods=['GET'])
